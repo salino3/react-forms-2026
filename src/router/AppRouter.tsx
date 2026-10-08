@@ -7,6 +7,9 @@ const DashboardLayout = lazy(
   () => import("../layouts/dashboard/dashboard.layout"),
 );
 const ChartsLayout = lazy(() => import("../layouts/charts/charts.layout"));
+const RegisterFormLayout = lazy(
+  () => import("../layouts/register-form/register-form.layout"),
+);
 const ErrorPageLayout = lazy(
   () => import("../layouts/error-page/error-page.layout"),
 );
@@ -23,6 +26,7 @@ const LoadingFallback: React.FC = () => (
 const routes: AppRoute[] = [
   { path: ROUTE_PATHS.DASHBOARD, element: <DashboardLayout /> },
   { path: ROUTE_PATHS.CHARTS, element: <ChartsLayout /> },
+  { path: ROUTE_PATHS.REGISTER_FORM, element: <RegisterFormLayout /> },
 ];
 
 const AppRouter: React.FC = () => {
