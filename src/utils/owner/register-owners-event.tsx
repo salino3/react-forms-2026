@@ -1,7 +1,12 @@
 import {
+  initialErrorRegisterOwnerState,
   initialStateFormRegisterOwner,
+  type CreateOwner,
   type StateRegisterOwner,
 } from "./interface";
+
+const createInitialErrorState = (): CreateOwner =>
+  initialErrorRegisterOwnerState;
 
 export async function registerOwnerEvent(
   prevState: StateRegisterOwner,

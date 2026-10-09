@@ -17,11 +17,11 @@ export interface PropsCurrentUser {
 }
 
 export interface OwnerProps {
-  id: number;
+  id?: number;
   name: string;
   email: string;
-  phone?: string;
-  created_at: Date;
+  phone: string | null;
+  created_at?: Date;
 }
 
 export interface PropsProvider {
