@@ -13,6 +13,11 @@ export async function registerOwnerEvent(
   formData: FormData,
 ): Promise<StateRegisterOwner> {
   try {
+    const rawData: CreateOwner = Object.fromEntries(
+      formData.entries(),
+    ) as CreateOwner;
+
+    console.log("rawData", rawData);
     return initialStateFormRegisterOwner;
   } catch (error) {
     return initialStateFormRegisterOwner;

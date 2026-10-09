@@ -24,8 +24,40 @@ export const FormRegisterOwner: React.FC = () => {
   );
 
   return (
-    <form id="rootFormRegisterOwner">
-      <fieldset disabled={isPending}></fieldset>
+    <form action={formAction} id="rootFormRegisterOwner">
+      <fieldset disabled={isPending}>
+        <div className={`boxInput boxInputName`}>
+          <label htmlFor="nameID">Name</label>
+          <input
+            type="text"
+            placeholder="Insert your name"
+            name="name"
+            id="nameID"
+          />
+        </div>
+        <div className={`boxInput boxInputEmail`}>
+          <label htmlFor="emailID">Email</label>
+          <input
+            type="email"
+            placeholder="Insert your email"
+            name="email"
+            id="emailID"
+          />
+        </div>
+        <div className={`boxInput boxInputPhone`}>
+          <label htmlFor="phoneID">Phone Number</label>
+          <input
+            type="text"
+            placeholder="Insert your name"
+            name="phone"
+            id="phoneID"
+          />
+        </div>
+        <div className="boxFormButtons">
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </div>
+      </fieldset>
     </form>
   );
 };

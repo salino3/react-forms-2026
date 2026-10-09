@@ -1,4 +1,4 @@
-import type { OwnerProps } from "../../store/interface";
+import type { OwnerProps } from "@/store/interface";
 
 export interface StateRegisterOwner {
   success: false;
