@@ -1,4 +1,5 @@
 import React, { useActionState, useState } from "react";
+import "./form-register-owner.styles.scss";
 import {
   initialErrorRegisterOwnerState,
   initialFormDataRegisterOwner,
@@ -6,8 +7,7 @@ import {
   registerOwnerEvent,
   type CreateOwner,
   type FormErrorRegisterForm,
-} from "../../../../utils";
-import "./form-register-owner.styles.scss";
+} from "@/utils";
 
 export const FormRegisterOwner: React.FC = () => {
   const [state, formAction, isPending] = useActionState(
