@@ -12,6 +12,10 @@
   scrollbar-width: none; // Firefox
   z-index: 0;
   flex-grow: 1;
+
+  background-color: #121214;
+  color: #e1e1e6;
+  font-family: sans-serif;
   &::-webkit-scrollbar {
     display: none; // Chrome, Safari, Opera
   }

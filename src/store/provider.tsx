@@ -9,6 +9,7 @@ export const useProvider = create<PropsProvider>()(
     immer((set, get) => ({
       currentUser: null,
       theme: Theme.light,
+      owners: [],
       changeGlobalColors() {
         set((state) => {
           state.theme = state.theme === Theme.dark ? Theme.light : Theme.dark;
