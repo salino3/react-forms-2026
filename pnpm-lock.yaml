@@ -33,6 +33,9 @@ importers:
       '@eslint/js':
         specifier: ^10.0.1
         version: 10.0.1(eslint@10.12.0)
+      '@rolldown/plugin-babel':
+        specifier: ^0.2.4
+        version: 0.2.4(@babel/core@7.29.7)(rolldown@1.2.13)(vite@8.3.3(@types/node@24.19.1)(sass@1.105.1))
       '@types/node':
         specifier: ^24.12.3
         version: 24.19.1
@@ -1438,7 +1441,6 @@ snapshots:
       rolldown: 1.2.13
     optionalDependencies:
       vite: 8.3.3(@types/node@24.19.1)(sass@1.105.1)
-    optional: true
 
   '@rolldown/pluginutils@1.0.1': {}
 
