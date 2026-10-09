@@ -6,47 +6,6 @@
   color: #e1e1e6;
   font-family: sans-serif;
 
-  .dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    background-color: #202024;
-    border-bottom: 1px solid #323238;
-
-    h1 {
-      margin: 0;
-      font-size: 1.5rem;
-      color: #00b37e;
-    }
-
-    .dashboard-nav {
-      display: flex;
-      gap: 1rem;
-
-      .nav-link {
-        color: #c4c4cc;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        transition:
-          background-color 0.2s,
-          color 0.2s;
-
-        &:hover {
-          background-color: #29292e;
-          color: #e1e1e6;
-        }
-
-        &.active {
-          background-color: #00b37e;
-          color: #ffffff;
-        }
-      }
-    }
-  }
-
   .dashboard-content {
     flex: 1;
     padding: 2rem;

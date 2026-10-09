@@ -1,21 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { HeaderApp } from "../../common-app";
 import "./dashboard.styles.scss";
 
 const DashboardLayout: React.FC = () => {
   return (
     <div className="dashboard-layout">
-      <header className="dashboard-header">
-        <h1>Dashboard</h1>
-        <nav className="dashboard-nav">
-          <Link to="/" className="nav-link active">
-            Dashboard
-          </Link>
-          <Link to="/charts" className="nav-link">
-            Charts
-          </Link>
-        </nav>
-      </header>
+      <HeaderApp page="Dashboard" />
       <main className="dashboard-content">
         <div className="card">
           <h2>Welcome to the Dashboard</h2>
