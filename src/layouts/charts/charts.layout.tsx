@@ -1,21 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { HeaderApp } from "../../common-app";
 import "./charts.styles.scss";
 
 const ChartsLayout: React.FC = () => {
   return (
     <div className="charts-layout">
-      <header className="charts-header">
-        <h1>Charts</h1>
-        <nav className="charts-nav">
-          <Link to="/" className="nav-link">
-            Dashboard
-          </Link>
-          <Link to="/charts" className="nav-link active">
-            Charts
-          </Link>
-        </nav>
-      </header>
+      <HeaderApp page="Charts" />
+
       <main className="charts-content">
         <div className="card">
           <h2>Analytics & Charts</h2>

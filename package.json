@@ -10,16 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dompurify": "^3.2.6",
+    "immer": "^10.1.1",
+    "notiflix": "^3.2.8",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.17.0",
-    "immer": "^10.1.1",
-    "dompurify": "^3.2.6",
-    "notiflix": "^3.2.8",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@rolldown/plugin-babel": "^0.2.4",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
