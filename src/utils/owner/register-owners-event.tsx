@@ -1,7 +1,7 @@
+import type { CreateOwner } from "@/store/interface";
 import {
   initialErrorRegisterOwnerState,
   initialStateFormRegisterOwner,
-  type CreateOwner,
   type FormErrorRegisterForm,
   type StateRegisterOwner,
 } from "./interface";

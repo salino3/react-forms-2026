@@ -1,4 +1,4 @@
-import type { OwnerProps } from "@/store/interface";
+import type { CreateOwner, OwnerProps } from "@/store/interface";
 
 export interface StateRegisterOwner {
   success: false;
@@ -7,8 +7,6 @@ export interface StateRegisterOwner {
   formData: CreateOwner | null;
   data: OwnerProps | null;
 }
-
-export interface CreateOwner extends Omit<OwnerProps, "id" | "created_at"> {}
 
 export const initialFormDataRegisterOwner: CreateOwner = {
   name: "",

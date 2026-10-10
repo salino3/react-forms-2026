@@ -24,6 +24,8 @@ export interface OwnerProps {
   created_at?: Date;
 }
 
+export interface CreateOwner extends Omit<OwnerProps, "id" | "created_at"> {}
+
 export interface PropsProvider {
   currentUser: PropsCurrentUser | null;
   theme: ThemeEnum;

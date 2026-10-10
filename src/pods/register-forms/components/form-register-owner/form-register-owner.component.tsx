@@ -5,9 +5,9 @@ import {
   initialFormDataRegisterOwner,
   initialStateFormRegisterOwner,
   registerOwnerEvent,
-  type CreateOwner,
   type FormErrorRegisterForm,
 } from "@/utils";
+import type { CreateOwner } from "@/store/interface";
 
 export const FormRegisterOwner: React.FC = () => {
   const [state, formAction, isPending] = useActionState(
