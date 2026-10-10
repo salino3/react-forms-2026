@@ -1,9 +1,9 @@
 import type { CreateOwner, OwnerProps } from "@/store/interface";
 
 export interface StateRegisterOwner {
-  success: false;
+  success: boolean;
   error: string;
-  fieldErrors: null;
+  fieldErrors: null | FormErrorRegisterForm;
   formData: CreateOwner | null;
   data: OwnerProps | null;
 }
