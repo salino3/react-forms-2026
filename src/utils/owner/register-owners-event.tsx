@@ -26,20 +26,23 @@ export async function registerOwnerEvent(
         ...formErrorData,
         name: "Property name is mandatory",
       };
-    } else if (!email) {
+    }
+    if (!email) {
       formErrorData = {
         ...formErrorData,
-        email: "Property name is mandatory",
+        email: "Property email is mandatory",
       };
-    } else if (email && !regexCorrectEmail.test(email)) {
+    }
+    if (email && !regexCorrectEmail.test(email)) {
       formErrorData = {
         ...formErrorData,
-        email: "Invalid Email format",
+        email: "Invalid email format",
       };
-    } else if (phone && !regexCorrectPhone.test(phone)) {
+    }
+    if (phone && !regexCorrectPhone.test(phone)) {
       formErrorData = {
         ...formErrorData,
-        email: "Invalid Phone format",
+        phone: "Invalid phone format",
       };
     }
 
