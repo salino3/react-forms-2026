@@ -1,6 +1,11 @@
-import React, { useActionState } from "react";
+import React, { useActionState, useEffect, useState } from "react";
+import {
+  initialErrorRegisterOwnerState,
+  initialStateFormRegisterOwner,
+  registerOwnerEvent,
+  type FormErrorRegisterForm,
+} from "@/utils";
 import "./form-register-owner.styles.scss";
-import { initialStateFormRegisterOwner, registerOwnerEvent } from "@/utils";
 
 export const FormRegisterOwner: React.FC = () => {
   const [state, formAction, isPending] = useActionState(
@@ -8,11 +13,25 @@ export const FormRegisterOwner: React.FC = () => {
     initialStateFormRegisterOwner,
   );
 
+  const [fieldErrors, setFieldErrors] = useState<FormErrorRegisterForm>(
+    initialErrorRegisterOwnerState,
+  );
+
+  const handleInputChange = (fieldName: keyof FormErrorRegisterForm) => {
+    setFieldErrors((prev) => ({ ...prev, [fieldName]: "" }));
+  };
+
+  useEffect(() => {
+    if (state.fieldErrors) {
+      setFieldErrors(state.fieldErrors);
+    }
+  }, [state.fieldErrors]);
+
   return (
     <form action={formAction} id="rootFormRegisterOwner">
       <fieldset disabled={isPending}>
         <div
-          className={`boxInput boxInputName ${state.fieldErrors?.name ? "has-error" : ""}`}
+          className={`boxInput boxInputName ${fieldErrors?.name ? "has-error" : ""}`}
         >
           <label htmlFor="nameID">Name</label>
           <input
@@ -21,13 +40,14 @@ export const FormRegisterOwner: React.FC = () => {
             name="name"
             id="nameID"
             defaultValue={state.formData?.name ?? ""}
+            onChange={() => handleInputChange("name")}
           />
-          {state.fieldErrors?.name && (
-            <span className="error-message">{state.fieldErrors.name}</span>
+          {fieldErrors?.name && (
+            <span className="error-message">{fieldErrors.name}</span>
           )}
         </div>
         <div
-          className={`boxInput boxInputEmail ${state.fieldErrors?.email ? "has-error" : ""}`}
+          className={`boxInput boxInputEmail ${fieldErrors?.email ? "has-error" : ""}`}
         >
           <label htmlFor="emailID">Email</label>
           <input
@@ -36,13 +56,14 @@ export const FormRegisterOwner: React.FC = () => {
             name="email"
             id="emailID"
             defaultValue={state.formData?.email ?? ""}
+            onChange={() => handleInputChange("email")}
           />
-          {state.fieldErrors?.email && (
-            <span className="error-message">{state.fieldErrors.email}</span>
+          {fieldErrors?.email && (
+            <span className="error-message">{fieldErrors.email}</span>
           )}
         </div>
         <div
-          className={`boxInput boxInputPhone ${state.fieldErrors?.phone ? "has-error" : ""}`}
+          className={`boxInput boxInputPhone ${fieldErrors?.phone ? "has-error" : ""}`}
         >
           <label htmlFor="phoneID">Phone Number</label>
           <input
@@ -51,9 +72,10 @@ export const FormRegisterOwner: React.FC = () => {
             name="phone"
             id="phoneID"
             defaultValue={state.formData?.phone ?? ""}
+            onChange={() => handleInputChange("phone")}
           />
-          {state.fieldErrors?.phone && (
-            <span className="error-message">{state.fieldErrors.phone}</span>
+          {fieldErrors?.phone && (
+            <span className="error-message">{fieldErrors.phone}</span>
           )}
         </div>
         <div className="boxFormButtons">
