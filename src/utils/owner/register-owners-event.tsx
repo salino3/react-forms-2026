@@ -43,9 +43,9 @@ export async function registerOwnerEvent(
       };
     }
 
-    console.log("rawData", rawData);
-
-    const hasErrors: boolean = Object.values(rawData).some((msg) => msg !== "");
+    const hasErrors: boolean = Object.values(formErrorData).some(
+      (msg) => msg !== "",
+    );
 
     if (hasErrors) {
       return {
