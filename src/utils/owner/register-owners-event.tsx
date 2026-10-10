@@ -1,7 +1,8 @@
-import type { CreateOwner } from "@/store/interface";
+import type { CreateOwner, OwnerProps } from "@/store/interface";
+import { ServiceApp } from "@/store";
+import { regexCorrectEmail, regexCorrectPhone } from "../utilities-app";
 import {
   initialErrorRegisterOwnerState,
-  initialStateFormRegisterOwner,
   type FormErrorRegisterForm,
   type StateRegisterOwner,
 } from "./interface";
@@ -14,14 +15,68 @@ export async function registerOwnerEvent(
   formData: FormData,
 ): Promise<StateRegisterOwner> {
   let formErrorData: FormErrorRegisterForm = createInitialErrorState();
-  try {
-    const rawData: CreateOwner = Object.fromEntries(
-      formData.entries(),
-    ) as CreateOwner;
+  const rawData: CreateOwner = Object.fromEntries(
+    formData.entries(),
+  ) as CreateOwner;
+  const { email, name, phone } = rawData;
 
-    console.log("rawData", rawData);
-    return initialStateFormRegisterOwner;
-  } catch (error) {
-    return initialStateFormRegisterOwner;
+  try {
+    if (!name) {
+      formErrorData = {
+        ...formErrorData,
+        name: "Property name is mandatory",
+      };
+    }
+    if (!email) {
+      formErrorData = {
+        ...formErrorData,
+        email: "Property email is mandatory",
+      };
+    }
+    if (email && !regexCorrectEmail.test(email)) {
+      formErrorData = {
+        ...formErrorData,
+        email: "Invalid email format",
+      };
+    }
+    if (phone && !regexCorrectPhone.test(phone)) {
+      formErrorData = {
+        ...formErrorData,
+        phone: "Invalid phone format",
+      };
+    }
+
+    const hasErrors: boolean = Object.values(formErrorData).some(
+      (msg) => msg !== "",
+    );
+
+    if (hasErrors) {
+      return {
+        ...prevState,
+        fieldErrors: formErrorData,
+        formData: rawData,
+        error: "Error",
+        success: false,
+      };
+    } else {
+      const result: OwnerProps | unknown =
+        await ServiceApp.createOwnerSA(rawData);
+      console.log("clog1", result);
+      if (result && typeof result === "object" && "id" in result) {
+        return {
+          ...prevState,
+          success: true,
+          data: result as OwnerProps,
+          formData: null,
+        };
+      }
+    }
+    return prevState;
+  } catch (err: unknown) {
+    return {
+      ...prevState,
+      error: err as string,
+      formData: rawData,
+    };
   }
 }
