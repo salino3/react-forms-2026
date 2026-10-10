@@ -58,13 +58,13 @@ export async function registerOwnerEvent(
     } else {
       const result: OwnerProps | unknown =
         await ServiceApp.createOwnerSA(rawData);
-
+      console.log("clog1", result);
       if (result && typeof result === "object" && "id" in result) {
         return {
           ...prevState,
           success: true,
           data: result as OwnerProps,
-          formData: rawData,
+          formData: null,
         };
       }
     }

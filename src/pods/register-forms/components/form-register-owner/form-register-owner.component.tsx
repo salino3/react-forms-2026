@@ -1,27 +1,12 @@
 import React, { useActionState } from "react";
 import "./form-register-owner.styles.scss";
-import {
-  // initialErrorRegisterOwnerState,
-  // initialFormDataRegisterOwner,
-  initialStateFormRegisterOwner,
-  registerOwnerEvent,
-  // type FormErrorRegisterForm,
-} from "@/utils";
-// import type { CreateOwner } from "@/store/interface";
+import { initialStateFormRegisterOwner, registerOwnerEvent } from "@/utils";
 
 export const FormRegisterOwner: React.FC = () => {
   const [state, formAction, isPending] = useActionState(
     registerOwnerEvent,
     initialStateFormRegisterOwner,
   );
-
-  // const [formData, setFormData] = useState<CreateOwner>(
-  //   initialFormDataRegisterOwner,
-  // );
-
-  // const [formErrorata, setFormErrorData] = useState<FormErrorRegisterForm>(
-  //   initialErrorRegisterOwnerState,
-  // );
 
   return (
     <form action={formAction} id="rootFormRegisterOwner">
