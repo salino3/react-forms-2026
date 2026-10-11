@@ -1,11 +1,12 @@
-import { useState, type ChangeEvent } from "react";
+import { ServiceApp, type UpdateOwner } from "@/store";
+import { BoxButtonsForm } from "@/common-app";
+import { useEffect, useState } from "react";
 import {
   initialErrorOwnerState,
   initialFormDataOwner,
   type FormErrorUpdateForm,
 } from "@/utils";
 import "./form-update-owner.styles.scss";
-import type { UpdateOwner } from "@/store";
 
 export const FormUpdateOwner: React.FC = () => {
   const [isLoading, setIsloading] = useState<boolean>(false);
@@ -29,8 +30,34 @@ export const FormUpdateOwner: React.FC = () => {
       }));
     };
 
+  //
+  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsloading(true);
+
+    ServiceApp.updateOwnerDataSA(formData).finally(() => setIsloading(false));
+  }
+
+  //
+  function handleReset(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setFormData(initialFormDataOwner);
+    setFieldErrors(initialErrorOwnerState);
+  }
+
+  //
+  useEffect(() => {
+    const controller = new AbortController();
+    const mockID = 3;
+    ServiceApp.getOwnerByID(mockID);
+  }, []);
+
   return (
-    <form id="rootFormUpdateOwner">
+    <form
+      onSubmit={handleSubmit}
+      onReset={handleReset}
+      id="rootFormUpdateOwner"
+    >
       <fieldset disabled={isLoading}>
         <legend>Update Form</legend>
         <div
@@ -42,8 +69,8 @@ export const FormUpdateOwner: React.FC = () => {
             placeholder="Insert your name"
             name="name"
             id="nameID"
-            value={formData.name}
-            onChange={() => handleChangeData("name")}
+            value={formData.name ?? ""}
+            onChange={handleChangeData("name")}
           />
           {fieldErrors?.name && (
             <span className="error-message">{fieldErrors.name}</span>
@@ -58,8 +85,8 @@ export const FormUpdateOwner: React.FC = () => {
             placeholder="Insert your email"
             name="email"
             id="emailID"
-            value={formData.email}
-            onChange={() => handleChangeData("email")}
+            value={formData.email ?? ""}
+            onChange={handleChangeData("email")}
           />
           {fieldErrors?.email && (
             <span className="error-message">{fieldErrors.email}</span>
@@ -75,16 +102,13 @@ export const FormUpdateOwner: React.FC = () => {
             name="phone"
             id="phoneID"
             value={formData.phone ?? ""}
-            onChange={() => handleChangeData("phone")}
+            onChange={handleChangeData("phone")}
           />
           {fieldErrors?.phone && (
             <span className="error-message">{fieldErrors.phone}</span>
           )}
         </div>
-        <div className="boxFormButtons">
-          <button type="submit">Submit</button>
-          <button type="reset">Reset</button>
-        </div>
+        <BoxButtonsForm />
       </fieldset>
     </form>
   );

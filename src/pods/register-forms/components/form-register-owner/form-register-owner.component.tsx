@@ -1,4 +1,5 @@
 import React, { useActionState, useEffect, useState } from "react";
+import { BoxButtonsForm } from "@/common-app";
 import {
   initialErrorOwnerState,
   initialStateFormRegisterOwner,
@@ -80,10 +81,7 @@ export const FormRegisterOwner: React.FC = () => {
             <span className="error-message">{fieldErrors.phone}</span>
           )}
         </div>
-        <div className="boxFormButtons">
-          <button type="submit">Submit</button>
-          <button type="reset">Reset</button>
-        </div>
+        <BoxButtonsForm />
       </fieldset>
     </form>
   );

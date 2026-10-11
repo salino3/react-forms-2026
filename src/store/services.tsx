@@ -49,7 +49,7 @@ export class ServiceApp {
 
   //
   static async getOwnerByID(
-    id: string,
+    id: string | number,
     signal?: AbortSignal,
   ): Promise<UpdateOwner | null> {
     try {
