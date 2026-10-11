@@ -1,7 +1,7 @@
 import type { CreateOwner, OwnerProps, UpdateOwner } from "./interface";
 import { VITE_URL_BACK } from "@/constants";
 
-export class ServiceApp {
+export class ServicesApp {
   static async createOwnerSA(body: CreateOwner): Promise<OwnerProps | unknown> {
     const response = await fetch(`${VITE_URL_BACK}/owners`, {
       method: "POST",

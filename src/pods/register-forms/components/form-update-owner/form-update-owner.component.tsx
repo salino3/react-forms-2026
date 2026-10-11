@@ -1,4 +1,4 @@
-import { ServiceApp, type UpdateOwner } from "@/store";
+import { ServicesApp, type UpdateOwner } from "@/store";
 import { BoxButtonsForm } from "@/common-app";
 import { useEffect, useState } from "react";
 import {
@@ -35,7 +35,7 @@ export const FormUpdateOwner: React.FC = () => {
     e.preventDefault();
     setIsloading(true);
 
-    ServiceApp.updateOwnerDataSA(formData).finally(() => setIsloading(false));
+    ServicesApp.updateOwnerDataSA(formData).finally(() => setIsloading(false));
   }
 
   //
@@ -49,7 +49,7 @@ export const FormUpdateOwner: React.FC = () => {
   useEffect(() => {
     const controller = new AbortController();
     const mockID = 3;
-    ServiceApp.getOwnerByID(mockID);
+    ServicesApp.getOwnerByID(mockID);
   }, []);
 
   return (
