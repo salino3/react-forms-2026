@@ -35,10 +35,10 @@ export const FormUpdateOwner: React.FC = () => {
   //
   function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
+    setIsloading(true);
     const { name, email, phone } = formData;
     let formErrorData = initialErrorOwnerState;
 
-    setIsloading(true);
     if (!name) {
       formErrorData = {
         ...formErrorData,
