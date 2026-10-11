@@ -46,4 +46,30 @@ export class ServiceApp {
 
     return data;
   }
+
+  //
+  static async getOwnerByID(
+    id: string,
+    signal?: AbortSignal,
+  ): Promise<UpdateOwner | null> {
+    try {
+      const res = await fetch(`${VITE_URL_BACK}/owners/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        signal,
+      });
+
+      return await res.json();
+    } catch (error: unknown) {
+      if (error instanceof Error && error.name === "AbortError") {
+        console.log("Request successfully canceled");
+      }
+
+      console.error("Error while searching for owner by ID:", error);
+      return null;
+    }
+  }
 }
