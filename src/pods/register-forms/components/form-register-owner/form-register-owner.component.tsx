@@ -1,6 +1,6 @@
 import React, { useActionState, useEffect, useState } from "react";
 import {
-  initialErrorRegisterOwnerState,
+  initialErrorOwnerState,
   initialStateFormRegisterOwner,
   registerOwnerEvent,
   type FormErrorRegisterForm,
@@ -14,7 +14,7 @@ export const FormRegisterOwner: React.FC = () => {
   );
 
   const [fieldErrors, setFieldErrors] = useState<FormErrorRegisterForm>(
-    initialErrorRegisterOwnerState,
+    initialErrorOwnerState,
   );
 
   const handleInputChange = (fieldName: keyof FormErrorRegisterForm) => {
@@ -30,6 +30,8 @@ export const FormRegisterOwner: React.FC = () => {
   return (
     <form action={formAction} id="rootFormRegisterOwner">
       <fieldset disabled={isPending}>
+        <legend>Register Form</legend>
+
         <div
           className={`boxInput boxInputName ${fieldErrors?.name ? "has-error" : ""}`}
         >
