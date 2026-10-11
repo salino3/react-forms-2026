@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 import { ServicesApp, type UpdateOwner } from "@/store";
 import { BoxButtonsForm } from "@/common-app";
-import { useEffect, useState } from "react";
 import {
   initialErrorOwnerState,
   initialFormDataOwner,
