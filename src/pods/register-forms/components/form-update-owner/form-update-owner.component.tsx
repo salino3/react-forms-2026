@@ -67,7 +67,7 @@ export const FormUpdateOwner: React.FC = () => {
       id="rootFormUpdateOwner"
     >
       {isLoading ? (
-        "Waiting.."
+        "Loading.."
       ) : (
         <fieldset disabled={isLoading}>
           <legend>Update Form</legend>
