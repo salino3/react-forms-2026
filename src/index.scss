@@ -98,6 +98,11 @@ html {
   &::-webkit-scrollbar {
     display: none; // Chrome, Safari, Opera
   }
+
+  background-color: #121214;
+  color: #e1e1e6;
+  z-index: 0;
+  height: 100dvh;
 }
 
 body {
@@ -105,9 +110,13 @@ body {
   //   sans-serif, Arial, Helvetica, sans-serif !important;
 
   font-family: Arial, Helvetica, sans-serif !important;
-  color: var(--global-01) !important;
-  background-color: var(--global-02);
+  // color: var(--global-01) !important;
+  // background-color: var(--global-02);
+  background-color: #121214;
+  color: #e1e1e6;
   z-index: 0;
+  height: 100dvh;
+
   button {
     cursor: pointer;
   }
