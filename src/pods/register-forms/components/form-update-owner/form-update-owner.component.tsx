@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import {
   initialErrorOwnerState,
   initialFormDataOwner,
+  regexCorrectEmail,
+  regexCorrectPhone,
   type FormErrorUpdateForm,
 } from "@/utils";
 import "./form-update-owner.styles.scss";
@@ -33,7 +35,44 @@ export const FormUpdateOwner: React.FC = () => {
   //
   function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
+    const { name, email, phone } = formData;
+    let formErrorData = initialErrorOwnerState;
+
     setIsloading(true);
+    if (!name) {
+      formErrorData = {
+        ...formErrorData,
+        name: "Property name is mandatory",
+      };
+    }
+    if (!email) {
+      formErrorData = {
+        ...formErrorData,
+        email: "Property email is mandatory",
+      };
+    }
+    if (email && !regexCorrectEmail.test(email)) {
+      formErrorData = {
+        ...formErrorData,
+        email: "Invalid email format",
+      };
+    }
+    if (phone && !regexCorrectPhone.test(phone)) {
+      formErrorData = {
+        ...formErrorData,
+        phone: "Invalid phone format",
+      };
+    }
+
+    const hasErrors: boolean = Object.values(formErrorData).some(
+      (msg) => msg !== "",
+    );
+
+    if (hasErrors) {
+      setFieldErrors(formErrorData);
+      setIsloading(false);
+      return;
+    }
 
     ServicesApp.updateOwnerDataSA(formData).finally(() => setIsloading(false));
   }
