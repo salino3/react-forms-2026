@@ -1,4 +1,4 @@
-import type { CreateOwner, OwnerProps } from "@/store/interface";
+import type { CreateOwner, OwnerProps, UpdateOwner } from "@/store/interface";
 
 export interface StateRegisterOwner {
   success: boolean;
@@ -8,7 +8,7 @@ export interface StateRegisterOwner {
   data: OwnerProps | null;
 }
 
-export const initialFormDataRegisterOwner: CreateOwner = {
+export const initialFormDataOwner: CreateOwner | UpdateOwner = {
   name: "",
   email: "",
   phone: "",
@@ -16,7 +16,11 @@ export const initialFormDataRegisterOwner: CreateOwner = {
 
 export interface FormErrorRegisterForm extends CreateOwner {}
 
-export const initialErrorRegisterOwnerState: FormErrorRegisterForm = {
+export interface FormErrorUpdateForm extends CreateOwner {}
+
+export const initialErrorOwnerState:
+  | FormErrorRegisterForm
+  | FormErrorUpdateForm = {
   name: "",
   email: "",
   phone: "",

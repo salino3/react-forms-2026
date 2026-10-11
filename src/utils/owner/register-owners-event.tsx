@@ -1,14 +1,14 @@
 import type { CreateOwner, OwnerProps } from "@/store/interface";
-import { ServiceApp } from "@/store";
+import { ServicesApp } from "@/store";
 import { regexCorrectEmail, regexCorrectPhone } from "../utilities-app";
 import {
-  initialErrorRegisterOwnerState,
+  initialErrorOwnerState,
   type FormErrorRegisterForm,
   type StateRegisterOwner,
 } from "./interface";
 
 const createInitialErrorState = (): FormErrorRegisterForm =>
-  initialErrorRegisterOwnerState;
+  initialErrorOwnerState;
 
 export async function registerOwnerEvent(
   prevState: StateRegisterOwner,
@@ -60,7 +60,7 @@ export async function registerOwnerEvent(
       };
     } else {
       const result: OwnerProps | unknown =
-        await ServiceApp.createOwnerSA(rawData);
+        await ServicesApp.createOwnerSA(rawData);
       console.log("clog1", result);
       if (result && typeof result === "object" && "id" in result) {
         return {
